@@ -21,8 +21,7 @@
 
 					<c:if test="${userClickAllProducts == true}">
 
- 						<script> 
-							window.categoryId = '';
+ 						<script> window.categoryId = '';
  						</script> 
 
 						<ol class="breadcrumb">
@@ -35,9 +34,9 @@
 
 					<c:if test="${userClickCategoryProducts == true}">
 
-<!-- 						<script> -->
-// 							window.categoryId = '${category.id}';
-<!-- 						</script> -->
+ 						<script>
+						window.categoryId = '${category.id}';
+ 						</script>
 
 						<ol class="breadcrumb">
 

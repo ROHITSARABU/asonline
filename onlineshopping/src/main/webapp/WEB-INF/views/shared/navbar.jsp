@@ -5,6 +5,8 @@
 		<div class="navbar-header">
 			<a class="navbar-brand" href="${contextRoot}/home">ASMARK</a>
 		</div>
+		
+		<div class="container-fluid">
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="${contextRoot}/home">Home</a></li>
 			
@@ -28,5 +30,6 @@
 			<li id="login">
 			<a href="${contextRoot}/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
 		</ul>
+		</div>
 	</div>
 </nav>

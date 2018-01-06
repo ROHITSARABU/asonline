@@ -87,10 +87,10 @@
  			</c:if> 
 
 
-<!-- 			<!-- Load only when click Manage Product --> -->
-<%-- 			<c:if test="${userClickManageProducts == true }"> --%>
-<%-- 				<%@include file="manageProducts.jsp"%> --%>
-<%-- 			</c:if> --%>
+ 			<!-- Load only when click Manage Product --> 
+ 			<c:if test="${userClickManageProducts == true }"> 
+ 				<%@include file="manageProducts.jsp"%>
+ 			</c:if> 
 			
 
 

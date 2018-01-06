@@ -17,9 +17,9 @@ $(function() {
 	case 'Manage Products':
 		$('#manageProducts').addClass('active');
 		break;
+		
 	default:
-		if (menu == "Home")
-			break;
+		if (menu == "Home") break;
 		$('#listproducts').addClass('active');
 		$('#a_'+menu).addClass('active');
 		break;
@@ -120,7 +120,9 @@ $(function() {
 	var $alert = $('.alert');
 	if ($alert.length) {
 
-		
+		setTimeout(function(){
+			$alert.fadeou('slow');
+		}, 3000)
 
 	}
 
@@ -159,7 +161,7 @@ $(function() {
 								data : 'code',
 								bSortable: false,
 								mRender : function(data, type, row) {
-								return '<img class="adminDataTableImg" src="'+ window.contextRoot + '/static/images/'+data+'.jpg"/>';
+								return '<img class="adminDataTableImg" src="'+ window.contextRoot + '/resources/images/'+data+'.jpg"/>';
 
 								}
 							},
@@ -198,10 +200,12 @@ $(function() {
 
 									var str = '';
 									str += '<label class="switch">';
-									if (data)// if active
+									if (data){	// if active
 										str += '<input type="checkbox" checked="checked" value="'+row.id+'" />';
-									else
+									}
+									else{
 										str += '<input type="checkbox" value="'+row.id+'" />';
+									}
 										str += '<div class="slider" ></div>	</label>';
 
 									return str;
@@ -224,39 +228,30 @@ $(function() {
 					
 					initComplete: function(){
 						var api = this.api();
-						api.$('.switch input[type="checkbox"]')
-						.on(
-								'change',
-								function() {
+						api.$('.switch input[type="checkbox"]').on('change', function() {
 									var checkbox = $(this);
 									var checked = checkbox.prop('checked');
-									var dMsg = (checked) ? 'You want to activate the product?'
-											: 'You want to deactivate the product?';
+									var dMsg = (checked)? 'You want to activate the product?':
+														  'You want to deactivate the product?';
 									var value = checkbox.prop('value');
-
-									bootbox
-											.confirm({
+									bootbox.confirm({
 												size : 'medium',
 												title : 'Product Activation & Deactivation',
 												message : dMsg,
-
 												callback : function(confirmed) {
-
 													if (confirmed) {
 														console.log(value);
 														
-														var activationUrl=window.contextRoot + '/manage/product/' + value + 'activaion';
+														var activationUrl=window.contextRoot + '/manage/product/' + value + '/activation';
 														
 														$.post(activationUrl, function(data){
-															bootbox
-															.alert({
-																size : 'medium',
-																title : 'Info',
-																message : data
+															bootbox.alert({
+																size: 'medium',
+																title: 'Information',
+																message: data
 															});
-	
-														});
-
+														})
+														
 														
 													} else {
 														checkbox.prop('checked', !checked);
@@ -279,7 +274,7 @@ $(function() {
 	// -----------------------------------------
 	//validation code for category
 	
-	var $categoryForm = $('#categoryFrom');
+	var $categoryForm = $('#categoryForm');
 	
 	if($categoryForm.length){
 		
@@ -287,7 +282,7 @@ $(function() {
 			rules : {
 				name : {
 					required: true,
-					minlengt: 2
+					minlength: 2
 				},
 				description: {
 					required: true
@@ -315,5 +310,6 @@ $(function() {
 	}
 	
 	//------------------------
+	
 	
 }); 

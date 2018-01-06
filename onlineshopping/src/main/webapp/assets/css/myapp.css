@@ -132,7 +132,7 @@ height:100px;
 	transition: .5s;
 }
 
-input:checked+.slider {
+input:checked+ .slider {
 	background-color: #0000ff;
 }
 
